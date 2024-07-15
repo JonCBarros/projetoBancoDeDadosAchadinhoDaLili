@@ -1,0 +1,30 @@
+CREATE TABLE Clientes (
+    ClienteID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(255) NOT NULL,
+    Telefone VARCHAR(20),
+    Email VARCHAR(255),
+    Endereco VARCHAR(255)
+);
+
+CREATE TABLE Vendas (
+    VendaID INT PRIMARY KEY AUTO_INCREMENT,
+    ClienteID INT,
+    DataVenda DATE,
+    TotalVenda DECIMAL(10, 2),
+    FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
+);
+
+CREATE TABLE Servicos (
+    ServicoID INT PRIMARY KEY AUTO_INCREMENT,
+    NomeServico VARCHAR(255) NOT NULL,
+    Preco DECIMAL(10, 2) NOT NULL
+);
+
+CREATE TABLE ServicosPrestados (
+    ServicoPrestadoID INT PRIMARY KEY AUTO_INCREMENT,
+    VendaID INT,
+    ServicoID INT,
+    Quantidade INT,
+    FOREIGN KEY (VendaID) REFERENCES Vendas(VendaID),
+    FOREIGN KEY (ServicoID) REFERENCES Servicos(ServicoID)
+);
