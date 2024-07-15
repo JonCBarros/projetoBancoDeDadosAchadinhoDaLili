@@ -1,0 +1,8 @@
+SELECT
+    ClienteID,
+    Nome,
+    Telefone,
+    Email,
+    Endereco
+FROM
+    Clientes;
