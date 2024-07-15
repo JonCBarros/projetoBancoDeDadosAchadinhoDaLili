@@ -1,0 +1,14 @@
+SELECT
+    c.ClienteID,
+    c.Nome,
+    SUM(sp.Quantidade * s.Preco) AS TotalDevido
+FROM
+    Clientes c
+JOIN
+    Vendas v ON c.ClienteID = v.ClienteID
+JOIN
+    ServicosPrestados sp ON v.VendaID = sp.VendaID
+JOIN
+    Servicos s ON sp.ServicoID = s.ServicoID
+GROUP BY
+    c.ClienteID, c.Nome;
