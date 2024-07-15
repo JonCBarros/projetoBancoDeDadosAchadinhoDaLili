@@ -1,0 +1,10 @@
+SELECT
+    c.ClienteID,
+    c.Nome,
+    SUM(v.TotalVenda) AS TotalDevido
+FROM
+    Clientes c
+JOIN
+    Vendas v ON c.ClienteID = v.ClienteID
+GROUP BY
+    c.ClienteID, c.Nome;
